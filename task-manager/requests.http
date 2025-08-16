@@ -1,0 +1,58 @@
+### 1. Get all tasks (empty list at first)
+GET http://localhost:8080/tasks
+
+### 2. Create a new task
+POST http://localhost:8080/tasks
+Content-Type: application/json
+
+{
+  "title": "Learn Go basics",
+  "done": false
+}
+
+### 3. Create another task
+POST http://localhost:8080/tasks
+Content-Type: application/json
+
+{
+  "title": "Build a REST API",
+  "done": false
+}
+
+### 4. Get all tasks (should show 2 tasks now)
+GET http://localhost:8080/tasks
+
+### 5. Get a single task by ID (ID=1)
+GET http://localhost:8080/tasks/1
+
+### 6. Update a task (mark ID=1 as done)
+PUT http://localhost:8080/tasks/1
+Content-Type: application/json
+
+{
+  "title": "Learn Go basics",
+  "done": true
+}
+
+### 7. Update a task title (ID=2)
+PUT http://localhost:8080/tasks/2
+Content-Type: application/json
+
+{
+  "title": "Build a REST API with Go",
+  "done": false
+}
+
+### 8. Delete a task (ID=1)
+DELETE http://localhost:8080/tasks/1
+
+### 9. Try to get deleted task (ID=1) → should return not found
+GET http://localhost:8080/tasks/1
+
+### 10. Edge case: create a task with missing title
+POST http://localhost:8080/tasks
+Content-Type: application/json
+
+{
+  "done": false
+}
